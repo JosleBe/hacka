@@ -1,0 +1,189 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(uuid())
+  email             String   @unique
+  name              String
+  role              String   // "PRODUCER", "VALIDATOR", "INVESTOR", "ADMIN"
+  stellarPublicKey  String   @unique
+  phone             String?
+  location          String?
+  profileImage      String?
+  verified          Int      @default(0) // 0 = false, 1 = true
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  loansAsBorrower   Loan[]        @relation("BorrowerLoans")
+  validations       Validation[]
+  investments       Investment[]
+  reputation        Reputation?
+  notifications     Notification[]
+
+  @@index([stellarPublicKey])
+  @@index([email])
+}
+
+model Loan {
+  id                    String     @id @default(uuid())
+  loanIdOnChain         Int        @unique // ID del préstamo en el smart contract
+  
+  borrowerId            String
+  borrower              User       @relation("BorrowerLoans", fields: [borrowerId], references: [id])
+  
+  totalAmount           Float      // En USDC (usar Float en lugar de Decimal)
+  amountReleased        Float      @default(0)
+  numMilestones         Int
+  status                String     @default("PENDING") // "PENDING", "ACTIVE", "COMPLETED", "DEFAULTED", "REJECTED"
+  
+  // Impacto
+  impactDescription     String
+  impactUnit            String     // "kg_bagazo", "kg_sargazo", "kg_plastic"
+  impactTarget          Float
+  impactAchieved        Float      @default(0)
+  
+  // Metadata
+  txHash                String?    // Hash de transacción de creación
+  approvedAt            DateTime?
+  completedAt           DateTime?
+  
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+
+  // Relations
+  milestones            Milestone[]
+  validations           Validation[]
+  documents             Document[]
+
+  @@index([borrowerId])
+  @@index([status])
+  @@index([loanIdOnChain])
+}
+
+model Milestone {
+  id                    String    @id @default(uuid())
+  loanId                String
+  loan                  Loan      @relation(fields: [loanId], references: [id], onDelete: Cascade)
+  
+  index                 Int
+  amount                Float
+  impactRequired        Float
+  validated             Int       @default(0) // 0 = false, 1 = true
+  
+  validatorId           String?
+  validationTimestamp   DateTime?
+  txHash                String?   // Hash de la transacción de validación
+  
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  // Relations
+  validation            Validation?
+
+  @@unique([loanId, index])
+  @@index([loanId])
+}
+
+model Validation {
+  id                String    @id @default(uuid())
+  
+  loanId            String
+  loan              Loan      @relation(fields: [loanId], references: [id], onDelete: Cascade)
+  
+  milestoneId       String    @unique
+  milestone         Milestone @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+  
+  validatorId       String
+  validator         User      @relation(fields: [validatorId], references: [id])
+  
+  impactDelivered   Float
+  proofHash         String?   // IPFS hash o hash de evidencia
+  proofImages       String?   // JSON string de URLs separadas por comas
+  notes             String?
+  
+  txHash            String?
+  validatedAt       DateTime  @default(now())
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([loanId])
+  @@index([validatorId])
+}
+
+model Investment {
+  id                String   @id @default(uuid())
+  
+  investorId        String
+  investor          User     @relation(fields: [investorId], references: [id])
+  
+  amount            Float
+  txHash            String
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([investorId])
+}
+
+model Reputation {
+  id                String   @id @default(uuid())
+  
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id])
+  
+  completedLoans    Int      @default(0)
+  totalImpact       Float    @default(0)
+  onTimeRate        Int      @default(100) // Porcentaje 0-100
+  reputationScore   Int      @default(0)   // Score calculado
+  nftIds            String?  // JSON string de IDs separados por comas
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Document {
+  id                String   @id @default(uuid())
+  
+  loanId            String
+  loan              Loan     @relation(fields: [loanId], references: [id], onDelete: Cascade)
+  
+  type              String   // "contract", "id", "proof", "other"
+  name              String
+  url               String
+  hash              String?  // Hash del documento
+  
+  uploadedAt        DateTime @default(now())
+
+  @@index([loanId])
+}
+
+model Notification {
+  id                String   @id @default(uuid())
+  
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  type              String   // "loan_created", "milestone_validated", "loan_completed"
+  title             String
+  message           String
+  read              Int      @default(0) // 0 = false, 1 = true
+  
+  metadata          String?  // JSON string con datos adicionales
+  
+  createdAt         DateTime @default(now())
+
+  @@index([userId])
+  @@index([read])
+}

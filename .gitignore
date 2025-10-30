@@ -1,0 +1,15 @@
+@"
+# Ignorar dependencias
+node_modules/
+
+# Ignorar archivos de entorno
+.env
+
+# Ignorar compilaciones
+dist/
+build/
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
+"@ | Out-File -Encoding utf8 .gitignore

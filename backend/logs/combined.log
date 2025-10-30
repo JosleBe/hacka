@@ -1,0 +1,49 @@
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 16:33:13"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 16:33:13"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 16:33:13"}
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 17:10:28"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:10:28"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:10:28"}
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 17:14:42"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:14:42"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:14:42"}
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 17:20:17"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:20:17"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:20:17"}
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 17:21:40"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:21:40"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:21:40"}
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 17:35:12"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:35:12"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:35:12"}
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 17:37:52"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:37:52"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:37:52"}
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 17:42:35"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:42:35"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:42:35"}
+{"level":"info","message":"🚀 Server running on port 4000","timestamp":"2025-10-29 17:46:14"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:46:14"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:46:14"}
+{"level":"info","message":"🚀 Server running on 0.0.0.0:4000","timestamp":"2025-10-29 17:47:01"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:47:01"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:47:01"}
+{"level":"error","message":"Stellar account does not exist","method":"POST","path":"/api/auth/register","statusCode":400,"timestamp":"2025-10-29 17:47:27"}
+{"level":"info","message":"🚀 Server running on 0.0.0.0:4000","timestamp":"2025-10-29 17:49:16"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:49:16"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:49:16"}
+{"level":"info","message":"🚀 Server running on 0.0.0.0:4000","timestamp":"2025-10-29 17:54:15"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:54:15"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:54:15"}
+{"level":"error","message":"Unexpected error: \nInvalid `prisma.user.create()` invocation in\nC:\\Users\\bvmat\\OneDrive\\Imágenes\\Escritorio\\hacka\\capital-raiz\\backend\\src\\routes\\auth.routes.ts:55:38\n\n  52 // }\n  53 \n  54 // Crear usuario\n→ 55 const user = await prisma.user.create(\nUnique constraint failed on the fields: (`stellarPublicKey`)","method":"POST","path":"/api/auth/register","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.user.create()` invocation in\nC:\\Users\\bvmat\\OneDrive\\Imágenes\\Escritorio\\hacka\\capital-raiz\\backend\\src\\routes\\auth.routes.ts:55:38\n\n  52 // }\n  53 \n  54 // Crear usuario\n→ 55 const user = await prisma.user.create(\nUnique constraint failed on the fields: (`stellarPublicKey`)\n    at $n.handleRequestError (C:\\Users\\bvmat\\OneDrive\\Imágenes\\Escritorio\\hacka\\capital-raiz\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7315)\n    at $n.handleAndLogRequestError (C:\\Users\\bvmat\\OneDrive\\Imágenes\\Escritorio\\hacka\\capital-raiz\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6623)\n    at $n.request (C:\\Users\\bvmat\\OneDrive\\Imágenes\\Escritorio\\hacka\\capital-raiz\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6307)\n    at async l (C:\\Users\\bvmat\\OneDrive\\Imágenes\\Escritorio\\hacka\\capital-raiz\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9633)\n    at async C:\\Users\\bvmat\\OneDrive\\Imágenes\\Escritorio\\hacka\\capital-raiz\\backend\\src\\routes\\auth.routes.ts:55:20","timestamp":"2025-10-29 17:54:49"}
+{"level":"info","message":"🚀 Server running on 0.0.0.0:4000","timestamp":"2025-10-29 17:55:31"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 17:55:31"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 17:55:31"}
+{"level":"error","message":"Usuario ya registrado con esta cuenta de Stellar","method":"POST","path":"/api/auth/register","statusCode":400,"timestamp":"2025-10-29 17:56:42"}
+{"level":"error","message":"Usuario ya registrado con esta cuenta de Stellar","method":"POST","path":"/api/auth/register","statusCode":400,"timestamp":"2025-10-29 17:56:49"}
+{"level":"error","message":"Usuario ya registrado con esta cuenta de Stellar","method":"POST","path":"/api/auth/register","statusCode":400,"timestamp":"2025-10-29 17:57:44"}
+{"level":"error","message":"Usuario ya registrado con esta cuenta de Stellar","method":"POST","path":"/api/auth/register","statusCode":400,"timestamp":"2025-10-29 17:58:16"}
+{"level":"error","message":"Usuario ya registrado con esta cuenta de Stellar","method":"POST","path":"/api/auth/register","statusCode":400,"timestamp":"2025-10-29 17:58:25"}
+{"level":"info","message":"🚀 Server running on 0.0.0.0:4000","timestamp":"2025-10-29 18:01:43"}
+{"level":"info","message":"📚 API Documentation: http://localhost:4000/api-docs","timestamp":"2025-10-29 18:01:43"}
+{"level":"info","message":"🌐 Network: testnet","timestamp":"2025-10-29 18:01:43"}
